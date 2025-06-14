@@ -1,26 +1,31 @@
-'use client'
-import { read } from "fs";
-import { get } from "http";
+"use client";
 import Image from "next/image";
-import { useEffect,useState } from "react";
+import useAnalytics from "@/hooks/useAnalytics";
 
 export default function Home() {
-  const [responseData, setResponseData] = useState(null);
-  useEffect(() => {
-    const getHello = async () => {
-      const res = await fetch("http://localhost:5000/api/hello")
-      const data = await res.json();
-      setResponseData(data);
-    }
-    
-    getHello();
-  }, []);
-  console.log(responseData)
+  // Apply the useAnalytics hook
+  const { trackEvent } = useAnalytics();
+
   return (
     <div>
-      {
-        responseData
-      }
+      <h2>rtjky</h2>
+      <button id="btn1" className="trackable">
+        btn1
+      </button>
+      <input
+        id="input1"
+        className="trackable"
+        placeholder="Type something..."
+        type="text"
+      />
+      <select id="select1" className="trackable">
+        <option id="select1-option1" value="option1" className="trackable">
+          Option 1
+        </option>
+        <option id="select1-option2" value="option2" className="trackable">
+          Option 2
+        </option>
+      </select>
     </div>
   );
 }
