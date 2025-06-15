@@ -29,10 +29,18 @@ const useAnalytics = () => {
   useEffect(() => {
     const handleEvent = (event: Event) => {
       const target = event.target as HTMLElement;
-
+      
       if (target.classList.contains("trackable")) {
         // Same event handling logic as above
-        trackEvent(event.type, target);
+        switch(target.tagName.toLowerCase()){
+          case("input"):
+            console.log('detected input'); 
+            trackEvent(event.type, target, { "tagData" : {"value": (target as HTMLInputElement).value}});
+            break;
+          default:
+            console.log('detected other');
+            trackEvent(event.type, target);
+        }
       }
     };
     // only track click events for simplicity
