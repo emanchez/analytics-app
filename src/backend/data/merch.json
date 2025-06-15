@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "imgUri": "/images/laptop1.jpg",
+    "name": "UltraBook Pro 14\" Laptop",
+    "price": 1299.99,
+    "available": true,
+    "quantity": 15,
+    "category": "Electronics"
+  },
+  {
+    "id": 2,
+    "imgUri": "/images/smartphone1.jpg",
+    "name": "Smartphone X200",
+    "price": 899.99,
+    "available": true,
+    "quantity": 30,
+    "category": "Electronics"
+  },
+  {
+    "id": 3,
+    "imgUri": "/images/headphones1.jpg",
+    "name": "Noise Cancelling Headphones",
+    "price": 199.99,
+    "available": true,
+    "quantity": 25,
+    "category": "Electronics"
+  },
+  {
+    "id": 4,
+    "imgUri": "/images/smartwatch1.jpg",
+    "name": "Smartwatch Series 5",
+    "price": 249.99,
+    "available": true,
+    "quantity": 20,
+    "category": "Electronics"
+  },
+  {
+    "id": 5,
+    "imgUri": "/images/tshirt1.jpg",
+    "name": "Tech Logo T-Shirt",
+    "price": 24.99,
+    "available": true,
+    "quantity": 50,
+    "category": "Clothing"
+  },
+  {
+    "id": 6,
+    "imgUri": "/images/hoodie1.jpg",
+    "name": "Developer Hoodie",
+    "price": 39.99,
+    "available": true,
+    "quantity": 40,
+    "category": "Clothing"
+  },
+  {
+    "id": 7,
+    "imgUri": "/images/keyboard1.jpg",
+    "name": "Mechanical Keyboard",
+    "price": 89.99,
+    "available": true,
+    "quantity": 18,
+    "category": "Electronics"
+  },
+  {
+    "id": 8,
+    "imgUri": "/images/mouse1.jpg",
+    "name": "Wireless Mouse",
+    "price": 49.99,
+    "available": true,
+    "quantity": 35,
+    "category": "Electronics"
+  },
+  {
+    "id": 9,
+    "imgUri": "/images/monitor1.jpg",
+    "name": "27\" 4K Monitor",
+    "price": 399.99,
+    "available": true,
+    "quantity": 12,
+    "category": "Electronics"
+  },
+  {
+    "id": 10,
+    "imgUri": "/images/usbdrive1.jpg",
+    "name": "128GB USB-C Flash Drive",
+    "price": 29.99,
+    "available": true,
+    "quantity": 60,
+    "category": "Electronics"
+  },
+  {
+    "id": 11,
+    "imgUri": "/images/backpack1.jpg",
+    "name": "Laptop Backpack",
+    "price": 59.99,
+    "available": true,
+    "quantity": 22,
+    "category": "Accessories"
+  },
+  {
+    "id": 12,
+    "imgUri": "/images/cap1.jpg",
+    "name": "Techie Cap",
+    "price": 19.99,
+    "available": true,
+    "quantity": 45,
+    "category": "Clothing"
+  },
+  {
+    "id": 13,
+    "imgUri": "/images/powerbank1.jpg",
+    "name": "10000mAh Power Bank",
+    "price": 34.99,
+    "available": true,
+    "quantity": 28,
+    "category": "Electronics"
+  },
+  {
+    "id": 14,
+    "imgUri": "/images/tablet1.jpg",
+    "name": "10\" Android Tablet",
+    "price": 299.99,
+    "available": true,
+    "quantity": 14,
+    "category": "Electronics"
+  },
+  {
+    "id": 15,
+    "imgUri": "/images/jacket1.jpg",
+    "name": "Windbreaker Jacket",
+    "price": 54.99,
+    "available": true,
+    "quantity": 17,
+    "category": "Clothing"
+  },
+  {
+    "id": 16,
+    "imgUri": "/images/charger1.jpg",
+    "name": "Fast USB Charger",
+    "price": 14.99,
+    "available": true,
+    "quantity": 70,
+    "category": "Electronics"
+  },
+  {
+    "id": 17,
+    "imgUri": "/images/speaker1.jpg",
+    "name": "Bluetooth Speaker",
+    "price": 59.99,
+    "available": true,
+    "quantity": 27,
+    "category": "Electronics"
+  },
+  {
+    "id": 18,
+    "imgUri": "/images/mug1.jpg",
+    "name": "Code Mug",
+    "price": 12.99,
+    "available": true,
+    "quantity": 80,
+    "category": "Accessories"
+  },
+  {
+    "id": 19,
+    "imgUri": "/images/deskmat1.jpg",
+    "name": "Large Desk Mat",
+    "price": 24.99,
+    "available": true,
+    "quantity": 33,
+    "category": "Accessories"
+  },
+  {
+    "id": 20,
+    "imgUri": "/images/ssd1.jpg",
+    "name": "1TB Portable SSD",
+    "price": 149.99,
+    "available": true,
+    "quantity": 16,
+    "category": "Electronics"
+  },
+  {
+    "id": 21,
+    "imgUri": "/images/socks1.jpg",
+    "name": "Binary Socks",
+    "price": 9.99,
+    "available": true,
+    "quantity": 55,
+    "category": "Clothing"
+  },
+  {
+    "id": 22,
+    "imgUri": "/images/webcam1.jpg",
+    "name": "HD Webcam",
+    "price": 69.99,
+    "available": true,
+    "quantity": 19,
+    "category": "Electronics"
+  },
+  {
+    "id": 23,
+    "imgUri": "/images/earbuds1.jpg",
+    "name": "Wireless Earbuds",
+    "price": 79.99,
+    "available": true,
+    "quantity": 24,
+    "category": "Electronics"
+  },
+  {
+    "id": 24,
+    "imgUri": "/images/hat1.jpg",
+    "name": "AI Enthusiast Hat",
+    "price": 21.99,
+    "available": true,
+    "quantity": 38,
+    "category": "Clothing"
+  },
+  {
+    "id": 25,
+    "imgUri": "/images/fitnessband1.jpg",
+    "name": "Fitness Band",
+    "price": 49.99,
+    "available": true,
+    "quantity": 29,
+    "category": "Electronics"
+  },
+  {
+    "id": 26,
+    "imgUri": "/images/phonecase1.jpg",
+    "name": "Silicone Phone Case",
+    "price": 15.99,
+    "available": true,
+    "quantity": 42,
+    "category": "Accessories"
+  },
+  {
+    "id": 27,
+    "imgUri": "/images/graphictee1.jpg",
+    "name": "Graphic Tee - Debug Mode",
+    "price": 22.99,
+    "available": true,
+    "quantity": 36,
+    "category": "Clothing"
+  },
+  {
+    "id": 28,
+    "imgUri": "/images/monitor2.jpg",
+    "name": "24\" FHD Monitor",
+    "price": 179.99,
+    "available": true,
+    "quantity": 13,
+    "category": "Electronics"
+  },
+  {
+    "id": 29,
+    "imgUri": "/images/keyboard2.jpg",
+    "name": "Wireless Keyboard",
+    "price": 59.99,
+    "available": true,
+    "quantity": 21,
+    "category": "Electronics"
+  },
+  {
+    "id": 30,
+    "imgUri": "/images/mousepad1.jpg",
+    "name": "RGB Mouse Pad",
+    "price": 19.99,
+    "available": true,
+    "quantity": 47,
+    "category": "Accessories"
+  },
+  {
+    "id": 31,
+    "imgUri": "/images/charger2.jpg",
+    "name": "Wireless Charging Pad",
+    "price": 29.99,
+    "available": true,
+    "quantity": 32,
+    "category": "Electronics"
+  },
+  {
+    "id": 32,
+    "imgUri": "/images/hoodie2.jpg",
+    "name": "Binary Code Hoodie",
+    "price": 44.99,
+    "available": true,
+    "quantity": 23,
+    "category": "Clothing"
+  },
+  {
+    "id": 33,
+    "imgUri": "/images/usbdrive2.jpg",
+    "name": "256GB USB 3.0 Drive",
+    "price": 39.99,
+    "available": true,
+    "quantity": 34,
+    "category": "Electronics"
+  },
+  {
+    "id": 34,
+    "imgUri": "/images/deskorganizer1.jpg",
+    "name": "Desk Organizer",
+    "price": 27.99,
+    "available": true,
+    "quantity": 26,
+    "category": "Accessories"
+  },
+  {
+    "id": 35,
+    "imgUri": "/images/jacket2.jpg",
+    "name": "Softshell Jacket",
+    "price": 69.99,
+    "available": true,
+    "quantity": 11,
+    "category": "Clothing"
+  },
+  {
+    "id": 36,
+    "imgUri": "/images/monitorstand1.jpg",
+    "name": "Adjustable Monitor Stand",
+    "price": 34.99,
+    "available": true,
+    "quantity": 20,
+    "category": "Accessories"
+  },
+  {
+    "id": 37,
+    "imgUri": "/images/earbuds2.jpg",
+    "name": "Noise Isolating Earbuds",
+    "price": 59.99,
+    "available": true,
+    "quantity": 22,
+    "category": "Electronics"
+  },
+  {
+    "id": 38,
+    "imgUri": "/images/tshirt2.jpg",
+    "name": "Cloud Dev T-Shirt",
+    "price": 25.99,
+    "available": true,
+    "quantity": 41,
+    "category": "Clothing"
+  },
+  {
+    "id": 39,
+    "imgUri": "/images/powerstrip1.jpg",
+    "name": "Surge Protector Power Strip",
+    "price": 21.99,
+    "available": true,
+    "quantity": 37,
+    "category": "Electronics"
+  },
+  {
+    "id": 40,
+    "imgUri": "/images/phoneholder1.jpg",
+    "name": "Adjustable Phone Holder",
+    "price": 13.99,
+    "available": true,
+    "quantity": 48,
+    "category": "Accessories"
+  },
+  {
+    "id": 41,
+    "imgUri": "/images/keyboard3.jpg",
+    "name": "Ergonomic Keyboard",
+    "price": 99.99,
+    "available": true,
+    "quantity": 17,
+    "category": "Electronics"
+  },
+  {
+    "id": 42,
+    "imgUri": "/images/mouse2.jpg",
+    "name": "Ergonomic Mouse",
+    "price": 54.99,
+    "available": true,
+    "quantity": 19,
+    "category": "Electronics"
+  },
+  {
+    "id": 43,
+    "imgUri": "/images/hat2.jpg",
+    "name": "Retro Tech Hat",
+    "price": 18.99,
+    "available": true,
+    "quantity": 39,
+    "category": "Clothing"
+  },
+  {
+    "id": 44,
+    "imgUri": "/images/ssd2.jpg",
+    "name": "512GB NVMe SSD",
+    "price": 89.99,
+    "available": true,
+    "quantity": 15,
+    "category": "Electronics"
+  },
+  {
+    "id": 45,
+    "imgUri": "/images/deskmat2.jpg",
+    "name": "Minimalist Desk Mat",
+    "price": 22.99,
+    "available": true,
+    "quantity": 29,
+    "category": "Accessories"
+  },
+  {
+    "id": 46,
+    "imgUri": "/images/tshirt3.jpg",
+    "name": "Open Source T-Shirt",
+    "price": 23.99,
+    "available": true,
+    "quantity": 44,
+    "category": "Clothing"
+  },
+  {
+    "id": 47,
+    "imgUri": "/images/charger3.jpg",
+    "name": "Multi-Port USB Charger",
+    "price": 24.99,
+    "available": true,
+    "quantity": 31,
+    "category": "Electronics"
+  },
+  {
+    "id": 48,
+    "imgUri": "/images/backpack2.jpg",
+    "name": "Tech Organizer Backpack",
+    "price": 74.99,
+    "available": true,
+    "quantity": 13,
+    "category": "Accessories"
+  },
+  {
+    "id": 49,
+    "imgUri": "/images/hoodie3.jpg",
+    "name": "AI Coder Hoodie",
+    "price": 49.99,
+    "available": true,
+    "quantity": 18,
+    "category": "Clothing"
+  },
+  {
+    "id": 50,
+    "imgUri": "/images/monitor3.jpg",
+    "name": "32\" Curved Monitor",
+    "price": 499.99,
+    "available": true,
+    "quantity": 10,
+    "category": "Electronics"
+  }
+]

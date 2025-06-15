@@ -1,31 +1,15 @@
-"use client";
-import Image from "next/image";
-import useAnalytics from "@/hooks/useAnalytics";
+import Featured from "@/components/analytics/Featured";
+import Footer from "@/components/analytics/Footer";
+import Header from "@/components/analytics/Header";
+import Hero from "@/components/analytics/Hero";
 
 export default function Home() {
-  // Apply the useAnalytics hook
-  const { trackEvent } = useAnalytics();
-
   return (
     <div>
-      <h2>rtjky</h2>
-      <button id="btn1" className="trackable">
-        btn1
-      </button>
-      <input
-        id="input1"
-        className="trackable"
-        placeholder="Type something..."
-        type="text"
-      />
-      <select id="select1" className="trackable">
-        <option id="select1-option1" value="option1" className="trackable">
-          Option 1
-        </option>
-        <option id="select1-option2" value="option2" className="trackable">
-          Option 2
-        </option>
-      </select>
+      <Header />
+      <Hero />
+      <Featured />
+      <Footer />
     </div>
   );
 }
