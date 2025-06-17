@@ -2,18 +2,14 @@
 import { useEffect, useState } from "react";
 import useAnalytics from "@/hooks/useAnalytics";
 import MerchCard from "@/components/store/subcomponents/MerchCard";
+import { MerchItem, transformMerchItem } from "@/types/merch";
 
-interface MerchItem {
-  id: number;
-  imgUri: string;
-  name: string;
-  price: number;
-  available: boolean;
-  quantity: number;
-  isFeatured: boolean;
-  category: string;
-}
-
+/**
+ * Featured Products Component
+ *
+ * Displays a grid of featured merchandise items fetched from the API.
+ * Uses shared types and transformation utilities for consistency.
+ */
 const Featured = () => {
   const [featuredItems, setFeaturedItems] = useState<MerchItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -47,7 +43,6 @@ const Featured = () => {
   }, []);
 
   const handleCardClick = (item: MerchItem) => {
-    // Track click analytics
     const element = document.activeElement as HTMLElement;
     if (element) {
       trackEvent("click", element, {
@@ -125,16 +120,8 @@ const Featured = () => {
                   }
                 }}
               >
-                <MerchCard
-                  merch={{
-                    id: item.id.toString(),
-                    name: item.name,
-                    description: `${item.category} - Qty: ${item.quantity}`,
-                    price: item.price,
-                    imageUrl: item.imgUri,
-                    inStock: item.available,
-                  }}
-                />
+                {/* Use the transformation utility */}
+                <MerchCard merch={transformMerchItem(item)} />
               </article>
             ))}
           </div>
