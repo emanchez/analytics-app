@@ -18,3 +18,18 @@ def hello_world():
 def retreive():
     print(request.get_json())
     return jsonify(isError=False, message="success", statusCode=200), 200
+
+
+@app.route("/api/get-merch", methods=["GET"])
+def getData():
+    try:
+        with open("./data/merch.json") as f:
+            data = json.load(f)  # Parse JSON file into Python object
+            return (
+                jsonify(
+                    isError=False, message="success", statusCode=200, responseData=data
+                ),
+                200,
+            )  # Return as JSON response
+    except Exception as e:
+        return jsonify(isError=True, message="failed: " + str(e), statusCode=500), 500

@@ -6,6 +6,7 @@
     "price": 1299.99,
     "available": true,
     "quantity": 15,
+    "isFeatured": true,
     "category": "Electronics"
   },
   {
@@ -15,6 +16,7 @@
     "price": 899.99,
     "available": true,
     "quantity": 30,
+    "isFeatured": true,
     "category": "Electronics"
   },
   {
@@ -24,6 +26,7 @@
     "price": 199.99,
     "available": true,
     "quantity": 25,
+    "isFeatured": true,
     "category": "Electronics"
   },
   {
@@ -33,6 +36,7 @@
     "price": 249.99,
     "available": true,
     "quantity": 20,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -42,6 +46,7 @@
     "price": 24.99,
     "available": true,
     "quantity": 50,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -51,6 +56,7 @@
     "price": 39.99,
     "available": true,
     "quantity": 40,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -60,6 +66,7 @@
     "price": 89.99,
     "available": true,
     "quantity": 18,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -69,6 +76,7 @@
     "price": 49.99,
     "available": true,
     "quantity": 35,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -78,6 +86,7 @@
     "price": 399.99,
     "available": true,
     "quantity": 12,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -87,6 +96,7 @@
     "price": 29.99,
     "available": true,
     "quantity": 60,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -96,6 +106,7 @@
     "price": 59.99,
     "available": true,
     "quantity": 22,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -105,6 +116,7 @@
     "price": 19.99,
     "available": true,
     "quantity": 45,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -114,6 +126,7 @@
     "price": 34.99,
     "available": true,
     "quantity": 28,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -123,6 +136,7 @@
     "price": 299.99,
     "available": true,
     "quantity": 14,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -132,6 +146,7 @@
     "price": 54.99,
     "available": true,
     "quantity": 17,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -141,6 +156,7 @@
     "price": 14.99,
     "available": true,
     "quantity": 70,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -150,6 +166,7 @@
     "price": 59.99,
     "available": true,
     "quantity": 27,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -159,6 +176,7 @@
     "price": 12.99,
     "available": true,
     "quantity": 80,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -168,6 +186,7 @@
     "price": 24.99,
     "available": true,
     "quantity": 33,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -177,6 +196,7 @@
     "price": 149.99,
     "available": true,
     "quantity": 16,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -186,6 +206,7 @@
     "price": 9.99,
     "available": true,
     "quantity": 55,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -195,6 +216,7 @@
     "price": 69.99,
     "available": true,
     "quantity": 19,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -204,6 +226,7 @@
     "price": 79.99,
     "available": true,
     "quantity": 24,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -213,6 +236,7 @@
     "price": 21.99,
     "available": true,
     "quantity": 38,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -222,6 +246,7 @@
     "price": 49.99,
     "available": true,
     "quantity": 29,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -231,6 +256,7 @@
     "price": 15.99,
     "available": true,
     "quantity": 42,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -240,6 +266,7 @@
     "price": 22.99,
     "available": true,
     "quantity": 36,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -249,6 +276,7 @@
     "price": 179.99,
     "available": true,
     "quantity": 13,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -258,6 +286,7 @@
     "price": 59.99,
     "available": true,
     "quantity": 21,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -267,6 +296,7 @@
     "price": 19.99,
     "available": true,
     "quantity": 47,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -276,6 +306,7 @@
     "price": 29.99,
     "available": true,
     "quantity": 32,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -285,6 +316,7 @@
     "price": 44.99,
     "available": true,
     "quantity": 23,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -294,6 +326,7 @@
     "price": 39.99,
     "available": true,
     "quantity": 34,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -303,6 +336,7 @@
     "price": 27.99,
     "available": true,
     "quantity": 26,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -312,6 +346,7 @@
     "price": 69.99,
     "available": true,
     "quantity": 11,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -321,6 +356,7 @@
     "price": 34.99,
     "available": true,
     "quantity": 20,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -330,6 +366,7 @@
     "price": 59.99,
     "available": true,
     "quantity": 22,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -339,6 +376,7 @@
     "price": 25.99,
     "available": true,
     "quantity": 41,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -348,6 +386,7 @@
     "price": 21.99,
     "available": true,
     "quantity": 37,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -357,6 +396,7 @@
     "price": 13.99,
     "available": true,
     "quantity": 48,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -366,6 +406,7 @@
     "price": 99.99,
     "available": true,
     "quantity": 17,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -375,6 +416,7 @@
     "price": 54.99,
     "available": true,
     "quantity": 19,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -384,6 +426,7 @@
     "price": 18.99,
     "available": true,
     "quantity": 39,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -393,6 +436,7 @@
     "price": 89.99,
     "available": true,
     "quantity": 15,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -402,6 +446,7 @@
     "price": 22.99,
     "available": true,
     "quantity": 29,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -411,6 +456,7 @@
     "price": 23.99,
     "available": true,
     "quantity": 44,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -420,6 +466,7 @@
     "price": 24.99,
     "available": true,
     "quantity": 31,
+    "isFeatured": false,
     "category": "Electronics"
   },
   {
@@ -429,6 +476,7 @@
     "price": 74.99,
     "available": true,
     "quantity": 13,
+    "isFeatured": false,
     "category": "Accessories"
   },
   {
@@ -438,6 +486,7 @@
     "price": 49.99,
     "available": true,
     "quantity": 18,
+    "isFeatured": false,
     "category": "Clothing"
   },
   {
@@ -447,6 +496,7 @@
     "price": 499.99,
     "available": true,
     "quantity": 10,
+    "isFeatured": false,
     "category": "Electronics"
   }
 ]
