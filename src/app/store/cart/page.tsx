@@ -74,7 +74,7 @@ const CartPage = () => {
   };
 
   /**
-   * Handle quantity update with CartContext and analytics tracking
+   * Handle quantity update with CartContext and analytics
    *
    * @param {string} itemId - ID of the item to update
    * @param {number} newQuantity - New quantity value
@@ -85,152 +85,164 @@ const CartPage = () => {
 
     updateQuantity(itemId, newQuantity);
 
-    // Track quantity change event
-    const element = document.getElementById(
-      `cart-item-${itemId}`
-    ) as HTMLElement;
-    if (element && item) {
-      trackEvent("click", element, {
-        action: "quantity_update",
-        productId: itemId,
-        productName: item.name,
-        productPrice: item.price,
-        oldQuantity: oldQuantity,
-        newQuantity: newQuantity,
-        quantityChange: newQuantity - oldQuantity,
-      });
-    }
+    // Track quantity change
+    trackEvent({
+      eventType: "click",
+      action:
+        newQuantity > oldQuantity ? "increase_quantity" : "decrease_quantity",
+      elementId:
+        newQuantity > oldQuantity ? `increase-${itemId}` : `decrease-${itemId}`,
+      productId: itemId,
+      productName: item?.name,
+      productPrice: item?.price,
+      oldQuantity,
+      newQuantity,
+    });
   };
 
   /**
-   * Handle item removal with CartContext and analytics tracking
+   * Handle item removal with CartContext and analytics
    *
    * @param {string} itemId - ID of the item to remove
    */
   const handleRemoveItem = (itemId: string) => {
     const item = cartItems.find((item) => item.id === itemId);
-
     removeFromCart(itemId);
 
-    // Track item removal event
-    const element = document.getElementById(`remove-${itemId}`) as HTMLElement;
-    if (element && item) {
-      trackEvent("click", element, {
-        action: "remove_from_cart",
-        productId: itemId,
-        productName: item.name,
-        productPrice: item.price,
-        removedQuantity: item.quantity,
-        removedValue: item.price * item.quantity,
-      });
-    }
+    // Track item removal
+    trackEvent({
+      eventType: "click",
+      action: "remove_from_cart",
+      elementId: `remove-${itemId}`,
+      productId: itemId,
+      productName: item?.name,
+      productPrice: item?.price,
+      quantity: item?.quantity,
+    });
   };
 
   /**
-   * Handle clear cart with analytics tracking
+   * Handle clear cart with analytics
    */
   const handleClearCart = () => {
-    const totalItems = getTotalItems();
+    const itemCount = getTotalItems();
     const totalValue = getTotalPrice();
-    const itemsSummary = cartItems.map((item) => ({
-      id: item.id,
-      name: item.name,
-      quantity: item.quantity,
-      price: item.price,
-    }));
 
     clearCart();
 
-    // Track clear cart event
-    const element = document.getElementById("clear-cart") as HTMLElement;
-    if (element) {
-      trackEvent("click", element, {
-        action: "clear_cart",
-        totalItems: totalItems,
-        totalValue: totalValue,
-        clearedItems: itemsSummary,
-      });
-    }
+    // Track cart clearing
+    trackEvent({
+      eventType: "click",
+      action: "clear_cart",
+      elementId: "clear-cart",
+      itemCount,
+      totalValue,
+    });
   };
 
   /**
-   * Handle promo code application with analytics tracking
+   * Handle promo code application with analytics
    */
   const applyPromoCode = (e: React.MouseEvent<HTMLButtonElement>) => {
     // Mock promo code logic - you can enhance this later
     console.log("Applying promo code:", promoCode);
 
-    // Track promo code application attempt
-    trackEvent("click", e.currentTarget, {
+    // Track promo code application
+    trackEvent({
+      eventType: "click",
       action: "apply_promo_code",
+      elementId: "apply-promo",
       promoCode: promoCode,
-      cartValue: calculateSubtotal(),
-      cartItems: getTotalItems(),
+      cartTotal: calculateTotal(),
+      itemCount: getTotalItems(),
     });
-
-    // TODO: Implement actual promo code validation and discount application
   };
 
   /**
-   * Handle checkout process initiation with comprehensive analytics tracking
+   * Handle checkout process initiation with analytics
    */
   const handleCheckout = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsCheckingOut(true);
 
-    // Prepare base checkout data (without action)
-    const baseCheckoutData = {
-      totalItems: getTotalItems(),
-      subtotal: calculateSubtotal(),
-      tax: calculateTax(),
-      total: calculateTotal(),
-      promoCodeUsed: promoCode || null,
-      itemsDetail: cartItems.map((item) => ({
-        productId: item.id,
-        productName: item.name,
-        productPrice: item.price,
+    // Track checkout initiation
+    trackEvent({
+      eventType: "click",
+      action: "initiate_checkout",
+      elementId: "checkout-button",
+      cartTotal: calculateTotal(),
+      itemCount: getTotalItems(),
+      items: cartItems.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
         quantity: item.quantity,
-        itemTotal: item.price * item.quantity,
       })),
-      checkoutTimestamp: new Date().toISOString(),
-    };
-
-    // Track checkout initiation with its own action
-    trackEvent("click", e.currentTarget, {
-      action: "checkout_initiated",
-      ...baseCheckoutData,
     });
 
     // Mock checkout process with cart data
-    console.log("Proceeding to checkout with items:", cartItems);
-    console.log("Total items:", getTotalItems());
-    console.log("Total price:", getTotalPrice());
-
-    // Simulate API call delay
     setTimeout(() => {
+      // Track successful checkout conversion
+      trackEvent({
+        eventType: "conversion",
+        action: "checkout_completed",
+        total: calculateTotal(),
+        itemCount: getTotalItems(),
+        promoCodeUsed: promoCode || undefined,
+        itemsDetail: cartItems.map((item) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+      });
+
+      alert("Checkout completed!");
+      clearCart();
       setIsCheckingOut(false);
-
-      // Track checkout completion with its own action
-      const completionElement = document.getElementById(
-        "checkout-button"
-      ) as HTMLElement;
-      if (completionElement) {
-        trackEvent("conversion", completionElement, {
-          action: "checkout_completed",
-          ...baseCheckoutData,
-          checkoutCompletedTimestamp: new Date().toISOString(),
-          checkoutDuration: 2000, // Mock duration
-        });
-      }
-
-      alert(
-        `Checkout for ${getTotalItems()} items totaling $${calculateTotal().toFixed(
-          2
-        )}`
-      );
-
-      // After successful checkout, you might want to clear the cart:
-      // clearCart();
     }, 2000);
+  };
+
+  /**
+   * Handle continue shopping link click
+   */
+  const handleContinueShopping = () => {
+    trackEvent({
+      eventType: "click",
+      action: "continue_shopping",
+      elementId: "continue-shopping",
+      fromPage: "cart",
+      cartItemCount: getTotalItems(),
+    });
+  };
+
+  /**
+   * Handle continue shopping link click from cart page
+   */
+  const handleContinueShoppingLink = () => {
+    trackEvent({
+      eventType: "click",
+      action: "continue_shopping",
+      elementId: "continue-shopping-link",
+      fromPage: "cart",
+      cartItemCount: getTotalItems(),
+    });
+  };
+
+  /**
+   * Handle promo code input change
+   */
+  const handlePromoCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPromoCode(e.target.value);
+
+    // Track promo code input (debounced)
+    if (e.target.value.length > 2) {
+      trackEvent({
+        eventType: "form_submit",
+        action: "promo_code_input",
+        elementId: "promo-code-input",
+        inputLength: e.target.value.length,
+      });
+    }
   };
 
   /**
@@ -253,7 +265,8 @@ const CartPage = () => {
               </p>
               <a
                 href="/store/browse"
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors trackable"
+                onClick={handleContinueShopping}
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                 id="continue-shopping"
               >
                 Continue Shopping
@@ -342,10 +355,14 @@ const CartPage = () => {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
-                            handleUpdateQuantity(item.id, item.quantity - 1)
+                            handleUpdateQuantity(
+                              item.id,
+                              Math.max(1, item.quantity - 1)
+                            )
                           }
                           className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300"
                           id={`decrease-${item.id}`}
+                          disabled={item.quantity <= 1}
                         >
                           -
                         </button>
@@ -413,7 +430,7 @@ const CartPage = () => {
                     <input
                       type="text"
                       value={promoCode}
-                      onChange={(e) => setPromoCode(e.target.value)}
+                      onChange={handlePromoCodeChange}
                       placeholder="Enter code"
                       className="flex-1 px-3 py-2 border border-gray-300 text-gray-800 rounded-lg"
                       id="promo-code-input"
@@ -449,6 +466,7 @@ const CartPage = () => {
           <div className="text-center mt-12">
             <a
               href="/store/browse"
+              onClick={handleContinueShoppingLink}
               className="text-blue-600 font-medium hover:underline"
               id="continue-shopping-link"
             >

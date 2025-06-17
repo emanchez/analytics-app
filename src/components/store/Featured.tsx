@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import useAnalytics from "@/hooks/useAnalytics";
 import MerchCard from "@/components/store/subcomponents/MerchCard";
 import { MerchItem, transformMerchItem } from "@/types/merch";
 
@@ -14,7 +13,6 @@ const Featured = () => {
   const [featuredItems, setFeaturedItems] = useState<MerchItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { trackEvent } = useAnalytics();
 
   useEffect(() => {
     const fetchMerch = async () => {
@@ -27,7 +25,7 @@ const Featured = () => {
         }
 
         const data = await response.json();
-        const parsedData: MerchItem[] = data;
+        const parsedData: MerchItem[] = data.responseData;
 
         // Filter only featured items
         const featured = parsedData.filter((item) => item.isFeatured);
@@ -41,18 +39,6 @@ const Featured = () => {
 
     fetchMerch();
   }, []);
-
-  const handleCardClick = (item: MerchItem) => {
-    const element = document.activeElement as HTMLElement;
-    if (element) {
-      trackEvent("click", element, {
-        productId: item.id,
-        productName: item.name,
-        productPrice: item.price,
-        productCategory: item.category,
-      });
-    }
-  };
 
   if (loading) {
     return (
@@ -111,12 +97,12 @@ const Featured = () => {
                 key={`featured-product-${item.id}`}
                 className="featured-item trackable hover:scale-105 transition-transform duration-200"
                 id={`featured-item-${item.id}`}
-                onClick={() => handleCardClick(item)}
+                // Remove onClick handler and related code
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
-                    handleCardClick(item);
+                    // handleCardClick(item);
                   }
                 }}
               >

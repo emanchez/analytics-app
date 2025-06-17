@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import useAnalytics from "@/hooks/useAnalytics";
 import { Merch } from "@/types/merch";
 import { useCart } from "@/contexts/CartContext";
+import useAnalytics from "@/hooks/useAnalytics";
 
 /**
  * Props for the MerchCard component
@@ -36,11 +36,11 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
   // State for managing wishlist status
   const [isWishlisted, setIsWishlisted] = useState(false);
 
-  // Analytics hook for tracking user interactions
-  const { trackEvent } = useAnalytics();
-
   // Cart context for adding items to cart
   const { addToCart } = useCart();
+
+  // Analytics hook for tracking user interactions
+  const { trackEvent } = useAnalytics();
 
   /**
    * Handle image loading errors by setting error state
@@ -58,17 +58,17 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
   const toggleWishlist = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
-
-    // Update wishlist state
     setIsWishlisted(!isWishlisted);
 
-    // Track wishlist interaction with detailed product data
-    trackEvent("click", e.currentTarget, {
+    // Track wishlist toggle event
+    trackEvent({
+      eventType: "click",
       action: "wishlist_toggle",
+      elementId: `wishlist-${merch.id}`,
       productId: merch.id,
       productName: merch.name,
       productPrice: merch.price,
-      isWishlisted: !isWishlisted, // Use the new state value
+      isWishlisted: !isWishlisted,
     });
   };
 
@@ -80,13 +80,13 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
-
-    // Add item to cart using the context
     addToCart(merch);
 
-    // Track the event
-    trackEvent("click", e.currentTarget, {
+    // Track add to cart event
+    trackEvent({
+      eventType: "click",
       action: "add_to_cart",
+      elementId: `add-to-cart-${merch.id}`,
       productId: merch.id,
       productName: merch.name,
       productPrice: merch.price,
@@ -103,13 +103,37 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
     e.preventDefault();
     e.stopPropagation();
 
-    // Track quick view interaction with basic product data
-    trackEvent("click", e.currentTarget, {
+    // Track quick view event
+    trackEvent({
+      eventType: "click",
       action: "quick_view",
+      elementId: `quick-view-${merch.id}`,
       productId: merch.id,
       productName: merch.name,
       productPrice: merch.price,
     });
+  };
+
+  /**
+   * Handle product card click (view product event)
+   *
+   * @param {React.MouseEvent<HTMLDivElement>} e - Click event from product card
+   */
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only track if clicking the card itself, not buttons
+    if (
+      e.target === e.currentTarget ||
+      (e.target as HTMLElement).closest(".card-content")
+    ) {
+      trackEvent({
+        eventType: "click",
+        action: "view_product",
+        elementId: `product-card-${merch.id}`,
+        productId: merch.id,
+        productName: merch.name,
+        productPrice: merch.price,
+      });
+    }
   };
 
   /**
@@ -119,8 +143,51 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
   const placeholderImage =
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='14' fill='%23666' text-anchor='middle' dy='.3em'%3ENo Image Available%3C/text%3E%3C/svg%3E";
 
+  // Original heart icon SVG
+  const HeartIcon = () => (
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" />
+    </svg>
+  );
+
+  // Original star icon SVG
+  const StarIcon = () => (
+    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+    </svg>
+  );
+
+  // Original eye icon SVG
+  const EyeIcon = () => (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5S21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5Z"
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+      />
+    </svg>
+  );
+
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 max-w-sm mx-auto overflow-hidden">
+    <div
+      className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 max-w-sm mx-auto overflow-hidden cursor-pointer"
+      onClick={handleCardClick}
+      id={`product-card-${merch.id}`}
+    >
       {/* Image Container with Overlay Elements */}
       <div className="relative">
         {/* Product Image with Error Handling */}
@@ -150,14 +217,7 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
           id={`wishlist-${merch.id}`}
           aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
-          {/* Heart Icon SVG */}
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fillRule="evenodd"
-              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <HeartIcon />
         </button>
 
         {/* Stock Status Badge - Positioned in top-left corner */}
@@ -173,7 +233,7 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
       </div>
 
       {/* Card Content Section */}
-      <div className="p-4">
+      <div className="p-4 card-content">
         {/* Product Name - Truncated to 2 lines max */}
         <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
           {merch.name}
@@ -188,10 +248,8 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
         <div className="flex items-center mb-3">
           <div className="flex text-yellow-400">
             {/* Generate 5 star icons */}
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-              </svg>
+            {Array.from({ length: 5 }, (_, i) => (
+              <StarIcon key={i} />
             ))}
           </div>
           <span className="text-gray-500 text-sm ml-2">(4.5)</span>
@@ -238,26 +296,7 @@ const MerchCard: React.FC<MerchCardProps> = ({ merch }) => {
             id={`quick-view-${merch.id}`}
             aria-label={`Quick view ${merch.name}`}
           >
-            {/* Eye Icon SVG for Quick View */}
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-              />
-            </svg>
+            <EyeIcon />
           </button>
         </div>
 

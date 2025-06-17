@@ -1,7 +1,14 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const StoreHeader = () => {
+  const router = useRouter();
+
+  const handleCartClick = () => {
+    router.push("/store/cart");
+  };
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="container mx-auto px-4">
@@ -51,19 +58,20 @@ const StoreHeader = () => {
           {/* Actions */}
           <div className="flex items-center space-x-4">
             <button
-              className="text-gray-600 hover:text-gray-900 trackable"
+              className="text-gray-600 hover:text-gray-900 trackable cursor-pointer"
               id="search-btn"
             >
               🔍
             </button>
             <button
-              className="text-gray-600 hover:text-gray-900 trackable"
+              className="text-gray-600 hover:text-gray-900 trackable cursor-pointer"
               id="cart-btn"
+              onClick={handleCartClick}
             >
               🛒
             </button>
             <button
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 trackable"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 trackable cursor-pointer"
               id="login-btn"
             >
               Login
@@ -72,7 +80,7 @@ const StoreHeader = () => {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-gray-600 trackable"
+            className="md:hidden text-gray-600 trackable cursor-pointer"
             id="mobile-menu-btn"
           >
             ☰
