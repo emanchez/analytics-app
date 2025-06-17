@@ -1,6 +1,7 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Merch } from "@/types/merch";
+import { getSessionId } from "@/utils/sessionManager";
 
 /**
  * Type definition for cart item
@@ -15,6 +16,7 @@ export interface CartItem extends Merch {
  */
 interface CartContextType {
   cartItems: CartItem[];
+  sessionId: string;
   addToCart: (item: Merch, quantity?: number) => void;
   removeFromCart: (itemId: string) => void;
   updateQuantity: (itemId: string, quantity: number) => void;
@@ -90,23 +92,29 @@ const clearCartCookie = () => {
  * Cart Provider Component
  *
  * Manages cart state and persistence using cookies
- * Provides cart operations to child components
- *
- * @param {React.ReactNode} children - Child components
+ * Now includes session tracking for analytics
  */
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [sessionId, setSessionId] = useState<string>("");
 
   /**
-   * Load cart data from cookie on component mount
+   * Initialize session and load cart data on component mount
    */
   useEffect(() => {
+    // Get or create session ID
+    const currentSessionId = getSessionId();
+    setSessionId(currentSessionId);
+
+    // Load cart data from cookie
     const savedCart = getCartCookie();
     setCartItems(savedCart);
     setIsInitialized(true);
+
+    console.log("Cart initialized for session:", currentSessionId);
   }, []);
 
   /**
@@ -116,8 +124,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     if (isInitialized) {
       setCartCookie(cartItems);
+
+      // Optional: Log cart changes with session info
+      console.log(`Cart updated for session ${sessionId}:`, {
+        itemCount: cartItems.length,
+        totalItems: getTotalItems(),
+        totalValue: getTotalPrice(),
+      });
     }
-  }, [cartItems, isInitialized]);
+  }, [cartItems, isInitialized, sessionId]);
 
   /**
    * Add item to cart or update quantity if item exists
@@ -202,7 +217,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  // Context value object
+  // Context value object with session info
   const contextValue: CartContextType = {
     cartItems,
     addToCart,
@@ -211,6 +226,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     clearCart,
     getTotalItems,
     getTotalPrice,
+    sessionId, // Add session ID to context if needed
   };
 
   return (
