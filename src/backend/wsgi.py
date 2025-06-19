@@ -147,6 +147,23 @@ def store_product_analytics(event_data):
     if os.path.exists(product_file):
         with open(product_file, "r") as f:
             product_data = json.load(f)
+
+        # Ensure all analytics fields exist (for backward compatibility)
+        if "analytics" not in product_data:
+            product_data["analytics"] = {}
+
+        analytics = product_data["analytics"]
+        if "views" not in analytics:
+            analytics["views"] = 0
+        if "clicks" not in analytics:
+            analytics["clicks"] = 0
+        if "addToCarts" not in analytics:
+            analytics["addToCarts"] = 0
+        if "purchases" not in analytics:
+            analytics["purchases"] = 0
+        if "firstSeen" not in analytics:
+            analytics["firstSeen"] = event_data["received_at"]
+
     else:
         product_data = {
             "id": product_id,

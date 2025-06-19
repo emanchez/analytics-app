@@ -5,11 +5,11 @@ const Hero: React.FC = () => {
     <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-16 px-4 md:px-8">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-          Welcome to Your Store Analytics
+          Welcome to Our Store
         </h1>
         <p className="text-lg md:text-xl mb-8">
-          Gain insights, track performance, and grow your business with powerful
-          analytics tools.
+          Discover cutting-edge products designed to power your digital future
+          and enhance your everyday life.
         </p>
         <div className="flex justify-center gap-4">
           <button className="bg-white text-blue-700 font-semibold px-6 py-3 rounded shadow hover:bg-blue-100 transition">
